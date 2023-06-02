@@ -122,21 +122,23 @@ class SiPMarray():
 
         return np.vstack((xs, ys))
     
-    def export_corners_active(self, 
-                              file_name:Optional[str] = None) -> np.ndarray:
-        """Get all the positions of the corners of the active area of the SiPMs.
-        Optionally, export the data to a file.
+    def export_centres(self, file_name, active_area: bool = True) -> None:
+        """Export the centres of the SiPMs to a file.
 
         Args:
-            file_name (Optional[str], optional): name of the file to write 
-                the corners into. Defaults to None.
+            file_name (str): name of the file to write the centres into
+        """
+        centres = self.get_centres(active_area=active_area)
+        np.savetxt(file_name, centres.T, delimiter=", ", fmt='%.3f')
+    
+    def get_corners_active(self) -> np.ndarray:
+        """Get all the positions of the corners of the active area of the SiPMs.
 
         Returns:
             np.ndarray: an array with the x and y coordinates of the 
                 corners of the active area of the SiPMs
         """
         
-
         A_corner_x = (self.D_corners_xx.flatten().compressed() + 
                         self.sipmunit.D_corner_x_active)
         B_corner_x = (self.D_corners_xx.flatten().compressed() + 
@@ -160,22 +162,25 @@ class SiPMarray():
         
         corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
                              C_corner_x, C_corner_y, D_corner_x, D_corner_y))
-        if file_name is not None:
-            np.savetxt(file_name, corners, 
-                       header = 'A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y', 
-                       delimiter=',')
-
-        return np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
-                          C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+        
+        return corners
     
-    def export_corners_package(self, file_name:str = ''):
-        """Get all the positions of the corners of the total (includes 
-        packaging) area of the SiPMs.
-        Optionally, export the data to a file.
+    def export_corners_active(self,file_name:str):
+        """Export the corners of the active area of the SiPMs to a file.
 
         Args:
-            file_name (Optional[str], optional): name of the file to write 
-                the corners into. Defaults to None.
+            file_name (str): name of the file to write the corners into
+        """
+        corners = self.get_corners_active()
+        np.savetxt(file_name, corners.T, 
+                       header = 'A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y', 
+                       delimiter=', ',
+                       fmt = '%.3f')
+
+
+    def get_corners_package(self) -> np.ndarray:
+        """Get all the positions of the corners of the total (includes 
+        packaging) area of the SiPMs.
 
         Returns:
             np.ndarray: an array with the x and y coordinates of the 
@@ -201,14 +206,20 @@ class SiPMarray():
         
         corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
                              C_corner_x, C_corner_y, D_corner_x, D_corner_y))
-        if file_name is not None:
-            np.savetxt(file_name, corners, 
-                       header = 'A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y', 
-                       delimiter=',')
-            
-        return np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
-                          C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+
+        return corners
     
+    def export_corners_package(self,file_name:str):
+        """Export the corners of the total area of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the corners into
+        """
+        corners = self.get_corners_package()
+        np.savetxt(file_name, corners.T, 
+                       header = 'A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y', 
+                       delimiter=', ',
+                       fmt = '%.3f')
     
     def plot_empty_array(self, unit_width: float, unit_height:float):
         """Plot simple division of the array circle in units.
