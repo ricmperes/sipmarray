@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>sipmarray.array API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sipmarray.array</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from matplotlib.collections import PatchCollection
+from matplotlib.patches import Circle, Rectangle
+import numpy as np
+import matplotlib.pyplot as plt
+from typing import Optional
+from .unit import SiPMunit
+
+class SiPMarray():
+    &#34;&#34;&#34;Class to represent a SiPM array.
+    &#34;&#34;&#34;
+    def __init__(self, array_diameter: float,
+                 border_margin:float, sipm_model:str):
+        &#34;&#34;&#34;SiPMarray class
+
+        Args:
+            array_diameter (float): diameter of the array
+            border_margin (float): margin between the sipms and the array border
+            sipm_model (str): model of the sipm to use
+        &#34;&#34;&#34;
+        
+        self.array_diameter = array_diameter
+        self.border_margin = border_margin
+        self.sipmunit = self.load_sipmunit(sipm_model)
+        
+        corner_meshes = self.make_corners()
+        self.cut_outside_array(corner_meshes)
+        self.n_sipms = self.A_corners_xx.count()
+
+    def make_corners(self) -&gt; tuple:
+        &#34;&#34;&#34;Define where the corners of the sipms are
+
+        Returns:
+            tuple: (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                        C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+        &#34;&#34;&#34;
+        
+        # make the center a not
+        D_corner_x = np.arange(0,self.array_diameter/2 + self.sipmunit.width_unit, self.sipmunit.width_unit)
+        D_corner_y = np.arange(0,self.array_diameter/2 +  self.sipmunit.height_unit, self.sipmunit.height_unit)
+
+        D_corner_x = np.concatenate([-np.flip(D_corner_x[1:]),D_corner_x])
+        D_corner_y = np.concatenate([-np.flip(D_corner_y[1:]),D_corner_y])
+
+        D_corner_xx, D_corner_yy = np.meshgrid(D_corner_x, D_corner_y, indexing = &#39;ij&#39;) 
+
+        A_corner_xx = D_corner_xx
+        A_corner_yy = B_corner_yy = D_corner_yy + self.sipmunit.height_unit
+
+        B_corner_xx = C_corner_xx = D_corner_xx + self.sipmunit.width_unit
+        C_corner_yy = D_corner_yy
+        
+        return (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+    
+    def cut_outside_array(self, corner_meshes:tuple):
+        &#34;&#34;&#34;Mask the sipms that are outside the array in a masked array.
+
+        Args:
+            corner_meshes (tuple): tuple with all the corner meshes
+        &#34;&#34;&#34;        
+        (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy) = corner_meshes
+        D_corner_rr = np.sqrt(D_corner_xx**2 + D_corner_yy**2)
+
+        A_corner_rr = np.sqrt(A_corner_xx**2 + A_corner_yy**2)
+        B_corner_rr = np.sqrt(B_corner_xx**2 + B_corner_yy**2)
+        C_corner_rr = np.sqrt(C_corner_xx**2 + C_corner_yy**2)
+        
+        A_mask_inside_array_rr = A_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        B_mask_inside_array_rr = B_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        C_mask_inside_array_rr = C_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        D_mask_inside_array_rr = D_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        
+        merged_mask = (~A_mask_inside_array_rr | 
+                       ~B_mask_inside_array_rr | 
+                       ~C_mask_inside_array_rr | 
+                       ~D_mask_inside_array_rr)
+        
+        self.D_corners_xx = np.ma.masked_array(D_corner_xx, mask= merged_mask)
+        self.D_corners_yy = np.ma.masked_array(D_corner_yy, mask= merged_mask)
+
+        self.A_corners_xx = np.ma.masked_array(A_corner_xx, mask= merged_mask)
+        self.A_corners_yy = np.ma.masked_array(A_corner_yy, mask= merged_mask)
+
+        self.B_corners_xx = np.ma.masked_array(B_corner_xx, mask= merged_mask)
+        self.B_corners_yy = np.ma.masked_array(B_corner_yy, mask= merged_mask)
+
+        self.C_corners_xx = np.ma.masked_array(C_corner_xx, mask= merged_mask)
+        self.C_corners_yy = np.ma.masked_array(C_corner_yy, mask= merged_mask)
+    
+    def load_sipmunit(self, model: str):
+        &#34;&#34;&#34;Load the SiPM unit.
+
+        Args:
+            model (str): name of the SiPM model
+
+        Returns:
+            SiPMunit: a SiPM unit class object
+        &#34;&#34;&#34;
+        return SiPMunit(model=model)
+    
+    def get_centres(self, active_area: bool = True):
+        &#34;&#34;&#34;Get centres of the SiPMs.
+
+        Args:
+            active_area (bool, optional): Returns the centres of teh 
+                active areas if true, otherwise the geometric centres of 
+                the packaging if false. Defaults to True.
+        Retuns:
+            list: list of the centres of the SiPMs
+        &#34;&#34;&#34;
+        if active_area:
+            (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_active_centre()
+        else:
+            (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_centre()
+        
+        D_corners_x_flatten = self.D_corners_xx.flatten().compressed()
+        D_corners_y_flatten = self.D_corners_yy.flatten().compressed()
+
+        xs = D_corners_x_flatten + x_sipm_centre
+        ys = D_corners_y_flatten + y_sipm_centre
+
+        return np.vstack((xs, ys))
+    
+    def export_centres(self, file_name, active_area: bool = True) -&gt; None:
+        &#34;&#34;&#34;Export the centres of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the centres into
+        &#34;&#34;&#34;
+        centres = self.get_centres(active_area=active_area)
+        np.savetxt(file_name, centres.T, delimiter=&#34;, &#34;, fmt=&#39;%.3f&#39;)
+    
+    def get_corners_active(self) -&gt; np.ndarray:
+        &#34;&#34;&#34;Get all the positions of the corners of the active area of the SiPMs.
+
+        Returns:
+            np.ndarray: an array with the x and y coordinates of the 
+                corners of the active area of the SiPMs
+        &#34;&#34;&#34;
+        
+        A_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active)
+        B_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active +
+                        self.sipmunit.width_active)
+        C_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active +
+                        self.sipmunit.width_active)
+        D_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active)
+        A_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active + 
+                        self.sipmunit.height_active)
+        B_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active + 
+                        self.sipmunit.height_active)
+        C_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active)
+        D_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active)
+        
+        corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                             C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+        
+        return corners
+    
+    def export_corners_active(self,file_name:str):
+        &#34;&#34;&#34;Export the corners of the active area of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the corners into
+        &#34;&#34;&#34;
+        corners = self.get_corners_active()
+        np.savetxt(file_name, corners.T, 
+                       header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                       delimiter=&#39;, &#39;,
+                       fmt = &#39;%.3f&#39;)
+
+
+    def get_corners_package(self) -&gt; np.ndarray:
+        &#34;&#34;&#34;Get all the positions of the corners of the total (includes 
+        packaging) area of the SiPMs.
+
+        Returns:
+            np.ndarray: an array with the x and y coordinates of the 
+                corners of the total area (including packaging) of the SiPMs
+        &#34;&#34;&#34;
+        
+        A_corner_x = (self.A_corners_xx.flatten().compressed() + 
+                        self.sipmunit.width_tolerance)
+        B_corner_x = (self.B_corners_xx.flatten().compressed() -
+                        self.sipmunit.width_tolerance)
+        C_corner_x = (self.C_corners_xx.flatten().compressed() -
+                        self.sipmunit.width_tolerance)
+        D_corner_x = (self.D_corners_xx.flatten().compressed() +
+                        self.sipmunit.width_tolerance)
+        A_corner_y = (self.A_corners_yy.flatten().compressed() -
+                        self.sipmunit.height_tolerance)
+        B_corner_y = (self.B_corners_yy.flatten().compressed() -
+                        self.sipmunit.height_tolerance)
+        C_corner_y = (self.C_corners_yy.flatten().compressed() +
+                        self.sipmunit.height_tolerance)
+        D_corner_y = (self.D_corners_yy.flatten().compressed() +
+                        self.sipmunit.height_tolerance)
+        
+        corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                             C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+
+        return corners
+    
+    def export_corners_package(self,file_name:str):
+        &#34;&#34;&#34;Export the corners of the total area of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the corners into
+        &#34;&#34;&#34;
+        corners = self.get_corners_package()
+        np.savetxt(file_name, corners.T, 
+                       header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                       delimiter=&#39;, &#39;,
+                       fmt = &#39;%.3f&#39;)
+    
+    def plot_empty_array(self, unit_width: float, unit_height:float):
+        &#34;&#34;&#34;Plot simple division of the array circle in units.
+
+        Args:
+            unit_width (float): width of the unit
+            unit_height (float): height of the unit
+        &#34;&#34;&#34;
+               
+        patches_sipms = []
+
+        fig = plt.figure(figsize = (6,6))
+        ax = plt.subplot(111)
+
+        n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+        for _x_i in range(n_corner_x):
+            for _y_i in range(n_corner_y):
+                patches_sipms.append(
+                    Rectangle(xy = (self.D_corners_xx[_x_i,_y_i], 
+                                    self.D_corners_yy[_x_i,_y_i]), 
+                              width = unit_width, 
+                              height = unit_height, 
+                              fill = True,
+                              edgecolor = &#39;k&#39;,
+                              facecolor = &#39;b&#39;,
+                              zorder = 0,
+                              alpha = 0.2,)
+                              )
+        ax.add_patch(Circle(xy=(0,0),
+                            radius = self.array_diameter/2, 
+                            fill = False, 
+                            color = &#39;r&#39;,
+                            zorder = 0, 
+                            label = &#39;Array diameter&#39;))
+
+        p1 = PatchCollection(patches_sipms, match_original=True, 
+                             label = &#39;SiPM units 1&#39;)
+        ax.add_collection(p1)
+        ax.set_xlabel(&#39;x [mm]&#39;)
+        ax.set_ylabel(&#39;y [mm]&#39;)
+        ax.set_aspect(&#39;equal&#39;)
+
+        ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+        ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+        # make patches for legend while it is not fixed in matplotlib
+        ax.add_patch(Rectangle((1e6,1e6),1,1,fill = True,
+                                         edgecolor = &#39;k&#39;,
+                                         facecolor = &#39;b&#39;,
+                                         alpha = 0.2,
+                                         label = &#39;SiPM unit inside the array&#39;))
+        ax.legend()
+        plt.show()
+        
+    def plot_sipm_array(self, figax:tuple = None):
+        &#34;&#34;&#34;Plot the array of SiPMs.
+
+        Args:
+            figax (tuple, optional): figure and axis objects to draw in. 
+                Defaults to None.
+
+        Returns:
+            tuple: figure and axis objects
+        &#34;&#34;&#34;
+        if figax is None:
+            fig, ax = plt.subplots(figsize = (6,6))
+        else:
+            fig, ax = figax
+
+        patches_sipms = []
+
+        n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+        for _x_i in range(n_corner_x):
+            for _y_i in range(n_corner_y):
+                patches_sipms += self.sipmunit.get_unit_patches(
+                    (self.D_corners_xx[_x_i,_y_i], 
+                     self.D_corners_yy[_x_i,_y_i]))
+                
+        ax.add_patch(Circle(xy=(0,0),
+                            radius = self.array_diameter/2, 
+                            fill = False, 
+                            color = &#39;r&#39;,
+                            zorder = 0, 
+                            label = &#39;Array diameter&#39;))
+
+        p1 = PatchCollection(patches_sipms, match_original=True, 
+                             label = &#39;SiPM units 1&#39;)
+        ax.add_collection(p1)
+        ax.set_xlabel(&#39;x&#39;)
+        ax.set_ylabel(&#39;y&#39;)
+        ax.set_aspect(&#39;equal&#39;)
+
+        ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+        ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+        ax.legend()
+
+        if figax is None:
+            plt.show()
+        else:
+            return fig, ax
+    
+    def print_properties(self, unit_properties = False):
+        &#34;&#34;&#34;Prints the main properties of the array object.
+
+        Args:
+            unit_properties (bool, optional): _description_. Defaults to False.
+        &#34;&#34;&#34;
+        print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
+        print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
+        print(f&#39;Number of units: {self.n_sipms}&#39;)
+        total_area = np.pi * (self.array_diameter/2)**2
+        print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+
+        if unit_properties:
+            self.sipmunit.print_properties()
+           </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sipmarray.array.SiPMarray"><code class="flex name class">
+<span>class <span class="ident">SiPMarray</span></span>
+<span>(</span><span>array_diameter: float, border_margin: float, sipm_model: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class to represent a SiPM array.</p>
+<p>SiPMarray class</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>array_diameter</code></strong> :&ensp;<code>float</code></dt>
+<dd>diameter of the array</dd>
+<dt><strong><code>border_margin</code></strong> :&ensp;<code>float</code></dt>
+<dd>margin between the sipms and the array border</dd>
+<dt><strong><code>sipm_model</code></strong> :&ensp;<code>str</code></dt>
+<dd>model of the sipm to use</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SiPMarray():
+    &#34;&#34;&#34;Class to represent a SiPM array.
+    &#34;&#34;&#34;
+    def __init__(self, array_diameter: float,
+                 border_margin:float, sipm_model:str):
+        &#34;&#34;&#34;SiPMarray class
+
+        Args:
+            array_diameter (float): diameter of the array
+            border_margin (float): margin between the sipms and the array border
+            sipm_model (str): model of the sipm to use
+        &#34;&#34;&#34;
+        
+        self.array_diameter = array_diameter
+        self.border_margin = border_margin
+        self.sipmunit = self.load_sipmunit(sipm_model)
+        
+        corner_meshes = self.make_corners()
+        self.cut_outside_array(corner_meshes)
+        self.n_sipms = self.A_corners_xx.count()
+
+    def make_corners(self) -&gt; tuple:
+        &#34;&#34;&#34;Define where the corners of the sipms are
+
+        Returns:
+            tuple: (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                        C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+        &#34;&#34;&#34;
+        
+        # make the center a not
+        D_corner_x = np.arange(0,self.array_diameter/2 + self.sipmunit.width_unit, self.sipmunit.width_unit)
+        D_corner_y = np.arange(0,self.array_diameter/2 +  self.sipmunit.height_unit, self.sipmunit.height_unit)
+
+        D_corner_x = np.concatenate([-np.flip(D_corner_x[1:]),D_corner_x])
+        D_corner_y = np.concatenate([-np.flip(D_corner_y[1:]),D_corner_y])
+
+        D_corner_xx, D_corner_yy = np.meshgrid(D_corner_x, D_corner_y, indexing = &#39;ij&#39;) 
+
+        A_corner_xx = D_corner_xx
+        A_corner_yy = B_corner_yy = D_corner_yy + self.sipmunit.height_unit
+
+        B_corner_xx = C_corner_xx = D_corner_xx + self.sipmunit.width_unit
+        C_corner_yy = D_corner_yy
+        
+        return (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+    
+    def cut_outside_array(self, corner_meshes:tuple):
+        &#34;&#34;&#34;Mask the sipms that are outside the array in a masked array.
+
+        Args:
+            corner_meshes (tuple): tuple with all the corner meshes
+        &#34;&#34;&#34;        
+        (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy) = corner_meshes
+        D_corner_rr = np.sqrt(D_corner_xx**2 + D_corner_yy**2)
+
+        A_corner_rr = np.sqrt(A_corner_xx**2 + A_corner_yy**2)
+        B_corner_rr = np.sqrt(B_corner_xx**2 + B_corner_yy**2)
+        C_corner_rr = np.sqrt(C_corner_xx**2 + C_corner_yy**2)
+        
+        A_mask_inside_array_rr = A_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        B_mask_inside_array_rr = B_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        C_mask_inside_array_rr = C_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        D_mask_inside_array_rr = D_corner_rr &lt; self.array_diameter/2 - self.border_margin
+        
+        merged_mask = (~A_mask_inside_array_rr | 
+                       ~B_mask_inside_array_rr | 
+                       ~C_mask_inside_array_rr | 
+                       ~D_mask_inside_array_rr)
+        
+        self.D_corners_xx = np.ma.masked_array(D_corner_xx, mask= merged_mask)
+        self.D_corners_yy = np.ma.masked_array(D_corner_yy, mask= merged_mask)
+
+        self.A_corners_xx = np.ma.masked_array(A_corner_xx, mask= merged_mask)
+        self.A_corners_yy = np.ma.masked_array(A_corner_yy, mask= merged_mask)
+
+        self.B_corners_xx = np.ma.masked_array(B_corner_xx, mask= merged_mask)
+        self.B_corners_yy = np.ma.masked_array(B_corner_yy, mask= merged_mask)
+
+        self.C_corners_xx = np.ma.masked_array(C_corner_xx, mask= merged_mask)
+        self.C_corners_yy = np.ma.masked_array(C_corner_yy, mask= merged_mask)
+    
+    def load_sipmunit(self, model: str):
+        &#34;&#34;&#34;Load the SiPM unit.
+
+        Args:
+            model (str): name of the SiPM model
+
+        Returns:
+            SiPMunit: a SiPM unit class object
+        &#34;&#34;&#34;
+        return SiPMunit(model=model)
+    
+    def get_centres(self, active_area: bool = True):
+        &#34;&#34;&#34;Get centres of the SiPMs.
+
+        Args:
+            active_area (bool, optional): Returns the centres of teh 
+                active areas if true, otherwise the geometric centres of 
+                the packaging if false. Defaults to True.
+        Retuns:
+            list: list of the centres of the SiPMs
+        &#34;&#34;&#34;
+        if active_area:
+            (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_active_centre()
+        else:
+            (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_centre()
+        
+        D_corners_x_flatten = self.D_corners_xx.flatten().compressed()
+        D_corners_y_flatten = self.D_corners_yy.flatten().compressed()
+
+        xs = D_corners_x_flatten + x_sipm_centre
+        ys = D_corners_y_flatten + y_sipm_centre
+
+        return np.vstack((xs, ys))
+    
+    def export_centres(self, file_name, active_area: bool = True) -&gt; None:
+        &#34;&#34;&#34;Export the centres of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the centres into
+        &#34;&#34;&#34;
+        centres = self.get_centres(active_area=active_area)
+        np.savetxt(file_name, centres.T, delimiter=&#34;, &#34;, fmt=&#39;%.3f&#39;)
+    
+    def get_corners_active(self) -&gt; np.ndarray:
+        &#34;&#34;&#34;Get all the positions of the corners of the active area of the SiPMs.
+
+        Returns:
+            np.ndarray: an array with the x and y coordinates of the 
+                corners of the active area of the SiPMs
+        &#34;&#34;&#34;
+        
+        A_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active)
+        B_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active +
+                        self.sipmunit.width_active)
+        C_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active +
+                        self.sipmunit.width_active)
+        D_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                        self.sipmunit.D_corner_x_active)
+        A_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active + 
+                        self.sipmunit.height_active)
+        B_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active + 
+                        self.sipmunit.height_active)
+        C_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active)
+        D_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                        self.sipmunit.D_corner_y_active)
+        
+        corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                             C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+        
+        return corners
+    
+    def export_corners_active(self,file_name:str):
+        &#34;&#34;&#34;Export the corners of the active area of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the corners into
+        &#34;&#34;&#34;
+        corners = self.get_corners_active()
+        np.savetxt(file_name, corners.T, 
+                       header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                       delimiter=&#39;, &#39;,
+                       fmt = &#39;%.3f&#39;)
+
+
+    def get_corners_package(self) -&gt; np.ndarray:
+        &#34;&#34;&#34;Get all the positions of the corners of the total (includes 
+        packaging) area of the SiPMs.
+
+        Returns:
+            np.ndarray: an array with the x and y coordinates of the 
+                corners of the total area (including packaging) of the SiPMs
+        &#34;&#34;&#34;
+        
+        A_corner_x = (self.A_corners_xx.flatten().compressed() + 
+                        self.sipmunit.width_tolerance)
+        B_corner_x = (self.B_corners_xx.flatten().compressed() -
+                        self.sipmunit.width_tolerance)
+        C_corner_x = (self.C_corners_xx.flatten().compressed() -
+                        self.sipmunit.width_tolerance)
+        D_corner_x = (self.D_corners_xx.flatten().compressed() +
+                        self.sipmunit.width_tolerance)
+        A_corner_y = (self.A_corners_yy.flatten().compressed() -
+                        self.sipmunit.height_tolerance)
+        B_corner_y = (self.B_corners_yy.flatten().compressed() -
+                        self.sipmunit.height_tolerance)
+        C_corner_y = (self.C_corners_yy.flatten().compressed() +
+                        self.sipmunit.height_tolerance)
+        D_corner_y = (self.D_corners_yy.flatten().compressed() +
+                        self.sipmunit.height_tolerance)
+        
+        corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                             C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+
+        return corners
+    
+    def export_corners_package(self,file_name:str):
+        &#34;&#34;&#34;Export the corners of the total area of the SiPMs to a file.
+
+        Args:
+            file_name (str): name of the file to write the corners into
+        &#34;&#34;&#34;
+        corners = self.get_corners_package()
+        np.savetxt(file_name, corners.T, 
+                       header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                       delimiter=&#39;, &#39;,
+                       fmt = &#39;%.3f&#39;)
+    
+    def plot_empty_array(self, unit_width: float, unit_height:float):
+        &#34;&#34;&#34;Plot simple division of the array circle in units.
+
+        Args:
+            unit_width (float): width of the unit
+            unit_height (float): height of the unit
+        &#34;&#34;&#34;
+               
+        patches_sipms = []
+
+        fig = plt.figure(figsize = (6,6))
+        ax = plt.subplot(111)
+
+        n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+        for _x_i in range(n_corner_x):
+            for _y_i in range(n_corner_y):
+                patches_sipms.append(
+                    Rectangle(xy = (self.D_corners_xx[_x_i,_y_i], 
+                                    self.D_corners_yy[_x_i,_y_i]), 
+                              width = unit_width, 
+                              height = unit_height, 
+                              fill = True,
+                              edgecolor = &#39;k&#39;,
+                              facecolor = &#39;b&#39;,
+                              zorder = 0,
+                              alpha = 0.2,)
+                              )
+        ax.add_patch(Circle(xy=(0,0),
+                            radius = self.array_diameter/2, 
+                            fill = False, 
+                            color = &#39;r&#39;,
+                            zorder = 0, 
+                            label = &#39;Array diameter&#39;))
+
+        p1 = PatchCollection(patches_sipms, match_original=True, 
+                             label = &#39;SiPM units 1&#39;)
+        ax.add_collection(p1)
+        ax.set_xlabel(&#39;x [mm]&#39;)
+        ax.set_ylabel(&#39;y [mm]&#39;)
+        ax.set_aspect(&#39;equal&#39;)
+
+        ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+        ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+        # make patches for legend while it is not fixed in matplotlib
+        ax.add_patch(Rectangle((1e6,1e6),1,1,fill = True,
+                                         edgecolor = &#39;k&#39;,
+                                         facecolor = &#39;b&#39;,
+                                         alpha = 0.2,
+                                         label = &#39;SiPM unit inside the array&#39;))
+        ax.legend()
+        plt.show()
+        
+    def plot_sipm_array(self, figax:tuple = None):
+        &#34;&#34;&#34;Plot the array of SiPMs.
+
+        Args:
+            figax (tuple, optional): figure and axis objects to draw in. 
+                Defaults to None.
+
+        Returns:
+            tuple: figure and axis objects
+        &#34;&#34;&#34;
+        if figax is None:
+            fig, ax = plt.subplots(figsize = (6,6))
+        else:
+            fig, ax = figax
+
+        patches_sipms = []
+
+        n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+        for _x_i in range(n_corner_x):
+            for _y_i in range(n_corner_y):
+                patches_sipms += self.sipmunit.get_unit_patches(
+                    (self.D_corners_xx[_x_i,_y_i], 
+                     self.D_corners_yy[_x_i,_y_i]))
+                
+        ax.add_patch(Circle(xy=(0,0),
+                            radius = self.array_diameter/2, 
+                            fill = False, 
+                            color = &#39;r&#39;,
+                            zorder = 0, 
+                            label = &#39;Array diameter&#39;))
+
+        p1 = PatchCollection(patches_sipms, match_original=True, 
+                             label = &#39;SiPM units 1&#39;)
+        ax.add_collection(p1)
+        ax.set_xlabel(&#39;x&#39;)
+        ax.set_ylabel(&#39;y&#39;)
+        ax.set_aspect(&#39;equal&#39;)
+
+        ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+        ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+        ax.legend()
+
+        if figax is None:
+            plt.show()
+        else:
+            return fig, ax
+    
+    def print_properties(self, unit_properties = False):
+        &#34;&#34;&#34;Prints the main properties of the array object.
+
+        Args:
+            unit_properties (bool, optional): _description_. Defaults to False.
+        &#34;&#34;&#34;
+        print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
+        print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
+        print(f&#39;Number of units: {self.n_sipms}&#39;)
+        total_area = np.pi * (self.array_diameter/2)**2
+        print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+
+        if unit_properties:
+            self.sipmunit.print_properties()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="sipmarray.array.SiPMarray.cut_outside_array"><code class="name flex">
+<span>def <span class="ident">cut_outside_array</span></span>(<span>self, corner_meshes: tuple)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mask the sipms that are outside the array in a masked array.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>corner_meshes</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>tuple with all the corner meshes</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cut_outside_array(self, corner_meshes:tuple):
+    &#34;&#34;&#34;Mask the sipms that are outside the array in a masked array.
+
+    Args:
+        corner_meshes (tuple): tuple with all the corner meshes
+    &#34;&#34;&#34;        
+    (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+            C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy) = corner_meshes
+    D_corner_rr = np.sqrt(D_corner_xx**2 + D_corner_yy**2)
+
+    A_corner_rr = np.sqrt(A_corner_xx**2 + A_corner_yy**2)
+    B_corner_rr = np.sqrt(B_corner_xx**2 + B_corner_yy**2)
+    C_corner_rr = np.sqrt(C_corner_xx**2 + C_corner_yy**2)
+    
+    A_mask_inside_array_rr = A_corner_rr &lt; self.array_diameter/2 - self.border_margin
+    B_mask_inside_array_rr = B_corner_rr &lt; self.array_diameter/2 - self.border_margin
+    C_mask_inside_array_rr = C_corner_rr &lt; self.array_diameter/2 - self.border_margin
+    D_mask_inside_array_rr = D_corner_rr &lt; self.array_diameter/2 - self.border_margin
+    
+    merged_mask = (~A_mask_inside_array_rr | 
+                   ~B_mask_inside_array_rr | 
+                   ~C_mask_inside_array_rr | 
+                   ~D_mask_inside_array_rr)
+    
+    self.D_corners_xx = np.ma.masked_array(D_corner_xx, mask= merged_mask)
+    self.D_corners_yy = np.ma.masked_array(D_corner_yy, mask= merged_mask)
+
+    self.A_corners_xx = np.ma.masked_array(A_corner_xx, mask= merged_mask)
+    self.A_corners_yy = np.ma.masked_array(A_corner_yy, mask= merged_mask)
+
+    self.B_corners_xx = np.ma.masked_array(B_corner_xx, mask= merged_mask)
+    self.B_corners_yy = np.ma.masked_array(B_corner_yy, mask= merged_mask)
+
+    self.C_corners_xx = np.ma.masked_array(C_corner_xx, mask= merged_mask)
+    self.C_corners_yy = np.ma.masked_array(C_corner_yy, mask= merged_mask)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.export_centres"><code class="name flex">
+<span>def <span class="ident">export_centres</span></span>(<span>self, file_name, active_area: bool = True) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export the centres of the SiPMs to a file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the file to write the centres into</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_centres(self, file_name, active_area: bool = True) -&gt; None:
+    &#34;&#34;&#34;Export the centres of the SiPMs to a file.
+
+    Args:
+        file_name (str): name of the file to write the centres into
+    &#34;&#34;&#34;
+    centres = self.get_centres(active_area=active_area)
+    np.savetxt(file_name, centres.T, delimiter=&#34;, &#34;, fmt=&#39;%.3f&#39;)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.export_corners_active"><code class="name flex">
+<span>def <span class="ident">export_corners_active</span></span>(<span>self, file_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export the corners of the active area of the SiPMs to a file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the file to write the corners into</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_corners_active(self,file_name:str):
+    &#34;&#34;&#34;Export the corners of the active area of the SiPMs to a file.
+
+    Args:
+        file_name (str): name of the file to write the corners into
+    &#34;&#34;&#34;
+    corners = self.get_corners_active()
+    np.savetxt(file_name, corners.T, 
+                   header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                   delimiter=&#39;, &#39;,
+                   fmt = &#39;%.3f&#39;)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.export_corners_package"><code class="name flex">
+<span>def <span class="ident">export_corners_package</span></span>(<span>self, file_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export the corners of the total area of the SiPMs to a file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the file to write the corners into</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_corners_package(self,file_name:str):
+    &#34;&#34;&#34;Export the corners of the total area of the SiPMs to a file.
+
+    Args:
+        file_name (str): name of the file to write the corners into
+    &#34;&#34;&#34;
+    corners = self.get_corners_package()
+    np.savetxt(file_name, corners.T, 
+                   header = &#39;A_x, A_y, B_x, B_y, C_x, C_y, D_x, D_y&#39;, 
+                   delimiter=&#39;, &#39;,
+                   fmt = &#39;%.3f&#39;)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.get_centres"><code class="name flex">
+<span>def <span class="ident">get_centres</span></span>(<span>self, active_area: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get centres of the SiPMs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>active_area</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Returns the centres of teh
+active areas if true, otherwise the geometric centres of
+the packaging if false. Defaults to True.</dd>
+</dl>
+<h2 id="retuns">Retuns</h2>
+<p>list: list of the centres of the SiPMs</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_centres(self, active_area: bool = True):
+    &#34;&#34;&#34;Get centres of the SiPMs.
+
+    Args:
+        active_area (bool, optional): Returns the centres of teh 
+            active areas if true, otherwise the geometric centres of 
+            the packaging if false. Defaults to True.
+    Retuns:
+        list: list of the centres of the SiPMs
+    &#34;&#34;&#34;
+    if active_area:
+        (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_active_centre()
+    else:
+        (x_sipm_centre, y_sipm_centre) = self.sipmunit.get_unit_centre()
+    
+    D_corners_x_flatten = self.D_corners_xx.flatten().compressed()
+    D_corners_y_flatten = self.D_corners_yy.flatten().compressed()
+
+    xs = D_corners_x_flatten + x_sipm_centre
+    ys = D_corners_y_flatten + y_sipm_centre
+
+    return np.vstack((xs, ys))</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.get_corners_active"><code class="name flex">
+<span>def <span class="ident">get_corners_active</span></span>(<span>self) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the positions of the corners of the active area of the SiPMs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>an array with the x and y coordinates of the
+corners of the active area of the SiPMs</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_corners_active(self) -&gt; np.ndarray:
+    &#34;&#34;&#34;Get all the positions of the corners of the active area of the SiPMs.
+
+    Returns:
+        np.ndarray: an array with the x and y coordinates of the 
+            corners of the active area of the SiPMs
+    &#34;&#34;&#34;
+    
+    A_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                    self.sipmunit.D_corner_x_active)
+    B_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                    self.sipmunit.D_corner_x_active +
+                    self.sipmunit.width_active)
+    C_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                    self.sipmunit.D_corner_x_active +
+                    self.sipmunit.width_active)
+    D_corner_x = (self.D_corners_xx.flatten().compressed() + 
+                    self.sipmunit.D_corner_x_active)
+    A_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                    self.sipmunit.D_corner_y_active + 
+                    self.sipmunit.height_active)
+    B_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                    self.sipmunit.D_corner_y_active + 
+                    self.sipmunit.height_active)
+    C_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                    self.sipmunit.D_corner_y_active)
+    D_corner_y = (self.D_corners_yy.flatten().compressed() + 
+                    self.sipmunit.D_corner_y_active)
+    
+    corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                         C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+    
+    return corners</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.get_corners_package"><code class="name flex">
+<span>def <span class="ident">get_corners_package</span></span>(<span>self) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the positions of the corners of the total (includes
+packaging) area of the SiPMs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>an array with the x and y coordinates of the
+corners of the total area (including packaging) of the SiPMs</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_corners_package(self) -&gt; np.ndarray:
+    &#34;&#34;&#34;Get all the positions of the corners of the total (includes 
+    packaging) area of the SiPMs.
+
+    Returns:
+        np.ndarray: an array with the x and y coordinates of the 
+            corners of the total area (including packaging) of the SiPMs
+    &#34;&#34;&#34;
+    
+    A_corner_x = (self.A_corners_xx.flatten().compressed() + 
+                    self.sipmunit.width_tolerance)
+    B_corner_x = (self.B_corners_xx.flatten().compressed() -
+                    self.sipmunit.width_tolerance)
+    C_corner_x = (self.C_corners_xx.flatten().compressed() -
+                    self.sipmunit.width_tolerance)
+    D_corner_x = (self.D_corners_xx.flatten().compressed() +
+                    self.sipmunit.width_tolerance)
+    A_corner_y = (self.A_corners_yy.flatten().compressed() -
+                    self.sipmunit.height_tolerance)
+    B_corner_y = (self.B_corners_yy.flatten().compressed() -
+                    self.sipmunit.height_tolerance)
+    C_corner_y = (self.C_corners_yy.flatten().compressed() +
+                    self.sipmunit.height_tolerance)
+    D_corner_y = (self.D_corners_yy.flatten().compressed() +
+                    self.sipmunit.height_tolerance)
+    
+    corners = np.vstack((A_corner_x, A_corner_y, B_corner_x, B_corner_y,
+                         C_corner_x, C_corner_y, D_corner_x, D_corner_y))
+
+    return corners</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.load_sipmunit"><code class="name flex">
+<span>def <span class="ident">load_sipmunit</span></span>(<span>self, model: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load the SiPM unit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the SiPM model</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SiPMunit</code></dt>
+<dd>a SiPM unit class object</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_sipmunit(self, model: str):
+    &#34;&#34;&#34;Load the SiPM unit.
+
+    Args:
+        model (str): name of the SiPM model
+
+    Returns:
+        SiPMunit: a SiPM unit class object
+    &#34;&#34;&#34;
+    return SiPMunit(model=model)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.make_corners"><code class="name flex">
+<span>def <span class="ident">make_corners</span></span>(<span>self) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Define where the corners of the sipms are</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>(A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy,
+C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_corners(self) -&gt; tuple:
+    &#34;&#34;&#34;Define where the corners of the sipms are
+
+    Returns:
+        tuple: (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+                    C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+    &#34;&#34;&#34;
+    
+    # make the center a not
+    D_corner_x = np.arange(0,self.array_diameter/2 + self.sipmunit.width_unit, self.sipmunit.width_unit)
+    D_corner_y = np.arange(0,self.array_diameter/2 +  self.sipmunit.height_unit, self.sipmunit.height_unit)
+
+    D_corner_x = np.concatenate([-np.flip(D_corner_x[1:]),D_corner_x])
+    D_corner_y = np.concatenate([-np.flip(D_corner_y[1:]),D_corner_y])
+
+    D_corner_xx, D_corner_yy = np.meshgrid(D_corner_x, D_corner_y, indexing = &#39;ij&#39;) 
+
+    A_corner_xx = D_corner_xx
+    A_corner_yy = B_corner_yy = D_corner_yy + self.sipmunit.height_unit
+
+    B_corner_xx = C_corner_xx = D_corner_xx + self.sipmunit.width_unit
+    C_corner_yy = D_corner_yy
+    
+    return (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
+            C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.plot_empty_array"><code class="name flex">
+<span>def <span class="ident">plot_empty_array</span></span>(<span>self, unit_width: float, unit_height: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot simple division of the array circle in units.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>unit_width</code></strong> :&ensp;<code>float</code></dt>
+<dd>width of the unit</dd>
+<dt><strong><code>unit_height</code></strong> :&ensp;<code>float</code></dt>
+<dd>height of the unit</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_empty_array(self, unit_width: float, unit_height:float):
+    &#34;&#34;&#34;Plot simple division of the array circle in units.
+
+    Args:
+        unit_width (float): width of the unit
+        unit_height (float): height of the unit
+    &#34;&#34;&#34;
+           
+    patches_sipms = []
+
+    fig = plt.figure(figsize = (6,6))
+    ax = plt.subplot(111)
+
+    n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+    for _x_i in range(n_corner_x):
+        for _y_i in range(n_corner_y):
+            patches_sipms.append(
+                Rectangle(xy = (self.D_corners_xx[_x_i,_y_i], 
+                                self.D_corners_yy[_x_i,_y_i]), 
+                          width = unit_width, 
+                          height = unit_height, 
+                          fill = True,
+                          edgecolor = &#39;k&#39;,
+                          facecolor = &#39;b&#39;,
+                          zorder = 0,
+                          alpha = 0.2,)
+                          )
+    ax.add_patch(Circle(xy=(0,0),
+                        radius = self.array_diameter/2, 
+                        fill = False, 
+                        color = &#39;r&#39;,
+                        zorder = 0, 
+                        label = &#39;Array diameter&#39;))
+
+    p1 = PatchCollection(patches_sipms, match_original=True, 
+                         label = &#39;SiPM units 1&#39;)
+    ax.add_collection(p1)
+    ax.set_xlabel(&#39;x [mm]&#39;)
+    ax.set_ylabel(&#39;y [mm]&#39;)
+    ax.set_aspect(&#39;equal&#39;)
+
+    ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+    ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+    # make patches for legend while it is not fixed in matplotlib
+    ax.add_patch(Rectangle((1e6,1e6),1,1,fill = True,
+                                     edgecolor = &#39;k&#39;,
+                                     facecolor = &#39;b&#39;,
+                                     alpha = 0.2,
+                                     label = &#39;SiPM unit inside the array&#39;))
+    ax.legend()
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.plot_sipm_array"><code class="name flex">
+<span>def <span class="ident">plot_sipm_array</span></span>(<span>self, figax: tuple = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot the array of SiPMs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>figax</code></strong> :&ensp;<code>tuple</code>, optional</dt>
+<dd>figure and axis objects to draw in.
+Defaults to None.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>figure and axis objects</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_sipm_array(self, figax:tuple = None):
+    &#34;&#34;&#34;Plot the array of SiPMs.
+
+    Args:
+        figax (tuple, optional): figure and axis objects to draw in. 
+            Defaults to None.
+
+    Returns:
+        tuple: figure and axis objects
+    &#34;&#34;&#34;
+    if figax is None:
+        fig, ax = plt.subplots(figsize = (6,6))
+    else:
+        fig, ax = figax
+
+    patches_sipms = []
+
+    n_corner_x, n_corner_y = np.shape(self.D_corners_xx)
+
+    for _x_i in range(n_corner_x):
+        for _y_i in range(n_corner_y):
+            patches_sipms += self.sipmunit.get_unit_patches(
+                (self.D_corners_xx[_x_i,_y_i], 
+                 self.D_corners_yy[_x_i,_y_i]))
+            
+    ax.add_patch(Circle(xy=(0,0),
+                        radius = self.array_diameter/2, 
+                        fill = False, 
+                        color = &#39;r&#39;,
+                        zorder = 0, 
+                        label = &#39;Array diameter&#39;))
+
+    p1 = PatchCollection(patches_sipms, match_original=True, 
+                         label = &#39;SiPM units 1&#39;)
+    ax.add_collection(p1)
+    ax.set_xlabel(&#39;x&#39;)
+    ax.set_ylabel(&#39;y&#39;)
+    ax.set_aspect(&#39;equal&#39;)
+
+    ax.set_xlim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+    ax.set_ylim(-self.array_diameter*1.2/2,self.array_diameter*1.2/2)
+
+    ax.legend()
+
+    if figax is None:
+        plt.show()
+    else:
+        return fig, ax</code></pre>
+</details>
+</dd>
+<dt id="sipmarray.array.SiPMarray.print_properties"><code class="name flex">
+<span>def <span class="ident">print_properties</span></span>(<span>self, unit_properties=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prints the main properties of the array object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>unit_properties</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd><em>description</em>. Defaults to False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_properties(self, unit_properties = False):
+    &#34;&#34;&#34;Prints the main properties of the array object.
+
+    Args:
+        unit_properties (bool, optional): _description_. Defaults to False.
+    &#34;&#34;&#34;
+    print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
+    print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
+    print(f&#39;Number of units: {self.n_sipms}&#39;)
+    total_area = np.pi * (self.array_diameter/2)**2
+    print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
+    print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
+    print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+
+    if unit_properties:
+        self.sipmunit.print_properties()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="sipmarray" href="index.html">sipmarray</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sipmarray.array.SiPMarray" href="#sipmarray.array.SiPMarray">SiPMarray</a></code></h4>
+<ul class="">
+<li><code><a title="sipmarray.array.SiPMarray.cut_outside_array" href="#sipmarray.array.SiPMarray.cut_outside_array">cut_outside_array</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.export_centres" href="#sipmarray.array.SiPMarray.export_centres">export_centres</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.export_corners_active" href="#sipmarray.array.SiPMarray.export_corners_active">export_corners_active</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.export_corners_package" href="#sipmarray.array.SiPMarray.export_corners_package">export_corners_package</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.get_centres" href="#sipmarray.array.SiPMarray.get_centres">get_centres</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.get_corners_active" href="#sipmarray.array.SiPMarray.get_corners_active">get_corners_active</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.get_corners_package" href="#sipmarray.array.SiPMarray.get_corners_package">get_corners_package</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.load_sipmunit" href="#sipmarray.array.SiPMarray.load_sipmunit">load_sipmunit</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.make_corners" href="#sipmarray.array.SiPMarray.make_corners">make_corners</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.plot_empty_array" href="#sipmarray.array.SiPMarray.plot_empty_array">plot_empty_array</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.plot_sipm_array" href="#sipmarray.array.SiPMarray.plot_sipm_array">plot_sipm_array</a></code></li>
+<li><code><a title="sipmarray.array.SiPMarray.print_properties" href="#sipmarray.array.SiPMarray.print_properties">print_properties</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
