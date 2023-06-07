@@ -1,9 +1,10 @@
+import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Circle, Rectangle
-import numpy as np
-import matplotlib.pyplot as plt
-from typing import Optional
-from .unit import SiPMunit
+
+from sipmarray.unit import SiPMunit
+
 
 class SiPMarray():
     """Class to represent a SiPM array.

@@ -15,6 +15,11 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.scripts]
+sipmarray = "sipmarray.scripts.script_sipmarray:main"
+sipmunit = "sipmarray.scripts.script_sipmunit:main"
+
 [project.urls]
 "Homepage" = "https://github.com/ricmperes/sipmarray"
 "Bug Tracker" = "https://github.com/ricmperes/sipmarray/issues"
+"Documentation" = "https://ricmperes.github.io/sipmarray/"
