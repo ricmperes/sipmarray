@@ -1,5 +1,7 @@
 # sipmarray
 
+[![PyPI version shields.io](https://img.shields.io/pypi/v/sipmarray.svg)](https://pypi.org/project/sipmarray/)
+
 > Ricardo Peres, 2023
 
 This pakacge provides a quick and easy way to get the goemetry of circular SiPM arrays. It was developed to know how many SiPM would be required to fully instrument a [DARWIN](https://darwin.physik.uzh.ch/)- or [XLZD](https://xlzd.org/)-size detector.
@@ -8,12 +10,14 @@ More SiPM unit options coming soon!
 
 ## Instalation
 ```bash
+pip install sipmarray
+```
+
+To install with an editable source:
+
+```bash
 git clone git@github.com:ricmperes/sipmarray.git
 cd sipmarray 
-pip install .
-```
-For instal in editable source:
-```bash
 pip install -e .
 ```
 
