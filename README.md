@@ -20,4 +20,7 @@ pip install -e .
 ## Usage
 
 In a jupyter notebook simply `import sipmarray`. Take a look at the [docs](https://ricmperes.github.io/sipmarray/) and example notebook (really, the package is pretty simple and self-explanatory).
-Use as a standalone application coming soon.
+
+The package can be used from the terminal (from anywhere woop woop!) to quickly get a plot or coordinate geometry of a sipmarray or sipmunit. Check the `sipmarray/Do the following for more info: 
+  * `sipmarray --help`
+  * `sipmunit --help`

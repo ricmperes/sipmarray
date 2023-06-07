@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sipmarray"
+version = "1.0"
+authors = [{ name="Ricardo Peres", email="rperes@physik.uzh.ch"},]
+description = "A simple package to get the geometry of SiPM arrays."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD-3-Clause license",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+sipmarray = "sipmarray.scripts.script_sipmarray:main"
+sipmunit = "sipmarray.scripts.script_sipmunit:main"
+
+[project.urls]
+"Homepage" = "https://github.com/ricmperes/sipmarray"
+"Bug Tracker" = "https://github.com/ricmperes/sipmarray/issues"
+"Documentation" = "https://ricmperes.github.io/sipmarray/"

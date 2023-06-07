@@ -1,7 +1,8 @@
-from matplotlib.patches import Rectangle
-import numpy as np
-import matplotlib.pyplot as plt
 from typing import Tuple
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.patches import Rectangle
 
 
 class SiPMunit():
