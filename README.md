@@ -1,6 +1,6 @@
 # sipmarray
 
-[![PyPI version shields.io](https://img.shields.io/pypi/v/sipmarray.svg)](https://pypi.org/project/sipmarray/)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/sipmarray.svg)](https://pypi.org/project/sipmarray/) [![Static Badge](https://img.shields.io/badge/Docs-%235F9EA0)](https://ricmperes.github.io/sipmarray/)
 
 > Ricardo Peres, 2023
 
