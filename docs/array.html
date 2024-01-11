@@ -26,12 +26,13 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from matplotlib.collections import PatchCollection
-from matplotlib.patches import Circle, Rectangle
+<pre><code class="python">import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.pyplot as plt
-from typing import Optional
-from .unit import SiPMunit
+from matplotlib.collections import PatchCollection
+from matplotlib.patches import Circle, Rectangle
+
+from sipmarray.unit import SiPMunit
+
 
 class SiPMarray():
     &#34;&#34;&#34;Class to represent a SiPM array.
@@ -53,6 +54,12 @@ class SiPMarray():
         corner_meshes = self.make_corners()
         self.cut_outside_array(corner_meshes)
         self.n_sipms = self.A_corners_xx.count()
+
+        self.total_array_area = np.pi * (self.array_diameter/2)**2
+        self.total_sipm_area = self.n_sipms * self.sipmunit.total_area
+        self.total_sipm_active_area = self.n_sipms * self.sipmunit.active_area
+        self.sipm_coverage = self.total_sipm_active_area/self.total_array_area
+
 
     def make_corners(self) -&gt; tuple:
         &#34;&#34;&#34;Define where the corners of the sipms are
@@ -361,10 +368,10 @@ class SiPMarray():
         print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
         print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
         print(f&#39;Number of units: {self.n_sipms}&#39;)
-        total_area = np.pi * (self.array_diameter/2)**2
-        print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
-        print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
-        print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+        print(f&#39;Total array area: {self.total_array_area:.2f} mm^2&#39;)
+        print(f&#39;Total photosensor area: {self.total_sipm_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM active area: {self.total_sipm_active_area:.2f} mm^2&#39;)
+        print(f&#39;SiPM coverage: {self.sipm_coverage:.2f}&#39;)
 
         if unit_properties:
             self.sipmunit.print_properties()
@@ -421,6 +428,12 @@ class SiPMarray():
         self.cut_outside_array(corner_meshes)
         self.n_sipms = self.A_corners_xx.count()
 
+        self.total_array_area = np.pi * (self.array_diameter/2)**2
+        self.total_sipm_area = self.n_sipms * self.sipmunit.total_area
+        self.total_sipm_active_area = self.n_sipms * self.sipmunit.active_area
+        self.sipm_coverage = self.total_sipm_active_area/self.total_array_area
+
+
     def make_corners(self) -&gt; tuple:
         &#34;&#34;&#34;Define where the corners of the sipms are
 
@@ -728,10 +741,10 @@ class SiPMarray():
         print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
         print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
         print(f&#39;Number of units: {self.n_sipms}&#39;)
-        total_area = np.pi * (self.array_diameter/2)**2
-        print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
-        print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
-        print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+        print(f&#39;Total array area: {self.total_array_area:.2f} mm^2&#39;)
+        print(f&#39;Total photosensor area: {self.total_sipm_area:.2f} mm^2&#39;)
+        print(f&#39;Total SiPM active area: {self.total_sipm_active_area:.2f} mm^2&#39;)
+        print(f&#39;SiPM coverage: {self.sipm_coverage:.2f}&#39;)
 
         if unit_properties:
             self.sipmunit.print_properties()</code></pre>
@@ -1244,10 +1257,10 @@ Defaults to None.</dd>
     print(f&#39;Array diameter: {self.array_diameter} mm&#39;)
     print(f&#39;Margin from the array edge: {self.border_margin} mm&#39;)
     print(f&#39;Number of units: {self.n_sipms}&#39;)
-    total_area = np.pi * (self.array_diameter/2)**2
-    print(f&#39;Total array area: {total_area:.2f} mm^2&#39;)
-    print(f&#39;Total SiPM area: {self.n_sipms * self.sipmunit.total_area:.2f} mm^2&#39;)
-    print(f&#39;Total SiPM active area: {self.n_sipms * self.sipmunit.active_area:.2f} mm^2&#39;)
+    print(f&#39;Total array area: {self.total_array_area:.2f} mm^2&#39;)
+    print(f&#39;Total photosensor area: {self.total_sipm_area:.2f} mm^2&#39;)
+    print(f&#39;Total SiPM active area: {self.total_sipm_active_area:.2f} mm^2&#39;)
+    print(f&#39;SiPM coverage: {self.sipm_coverage:.2f}&#39;)
 
     if unit_properties:
         self.sipmunit.print_properties()</code></pre>

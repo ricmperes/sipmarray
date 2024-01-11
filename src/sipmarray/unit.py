@@ -1,3 +1,4 @@
+from importlib import import_module
 from typing import Tuple
 
 import matplotlib.pyplot as plt
@@ -9,49 +10,55 @@ class SiPMunit():
     """Class to represent a SiPM unit."""
 
     def __init__(self, model):
-        self.model = model
+        self.get_model_file(model)
         self.get_model_geometry()
-    
-    def get_model_geometry(self):
-        
-        if str(self.model) in ['S13370-3050', 'S13370-3075', '3x3']:
-            self.name = 'S13370-3050, "3x3", by Hamamatsu'
-            self.width_package = 5.9
-            self.height_package = 6.55
-            self.width_tolerance = 0.15
-            self.height_tolerance = 0.15
-            self.width_active = 3
-            self.height_active = 3
-            self.D_corner_x_active = ((self.width_package - 
-                                       self.width_active)/2 
-                                      + self.width_tolerance)
-            self.D_corner_y_active = ((self.height_package - 
-                                       self.height_active)/2 -0.33 + 
-                                       self.height_tolerance)
+        self.set_dependant_properties()
 
-            
-        elif str(self.model) in ['S13370-6050','S13370-6075','6x6']:
-            self.name = 'S13370-6050, "6x6", by Hamamatsu'
-            self.width_package = 10.1
-            self.height_package = 8.9
-            self.width_tolerance = 0.1
-            self.height_tolerance = 0.1
-            self.width_active = 6
-            self.height_active = 6
-            self.D_corner_x_active = ((self.width_package - 
-                                       self.width_active)/2 + 
-                                       self.width_tolerance)
-            self.D_corner_y_active = ((self.height_package - 
-                                       self.height_active)/2 + 
-                                       self.height_tolerance)
-        
+    def get_model_file(self, model):
+        from sipmarray.models import model_lib
+        if model in model_lib.keys():
+            self.model = model_lib[model]
         else:
-            raise NotImplementedError('Model not implemented. Please make a PR.')
+            raise ValueError('Model not found. Please make a PR to add it.')
         
+    def get_model_geometry(self):
+        """Loads model geometric properties from the model file.
+
+        Raises:
+            ModuleNotFoundError: raised if the model file is not found.
+        """
+        try:
+            model_module = import_module(f'sipmarray.models.{self.model}')
+            model_class = getattr(model_module, self.model)
+            _model = model_class()
+
+            self.name = _model.name
+            self.width_package = _model.width_package
+            self.height_package = _model.height_package
+            self.width_tolerance = _model.width_tolerance
+            self.height_tolerance = _model.height_tolerance
+            self.width_active = _model.width_active
+            self.height_active = _model.height_active
+            self.active_area_correction = _model.active_area_correction
+            self.D_corner_x_active = _model.D_corner_x_active
+            self.D_corner_y_active = _model.D_corner_y_active
+
+            self.set_dependant_properties()
+
+        except ModuleNotFoundError:
+            raise ModuleNotFoundError(
+                'Model not found. Please make a PR to add it.')
+    
+    def set_dependant_properties(self):
+        """Defines dependant properties of the SiPM unit: total area, active
+        area and active area fraction.
+        """
         self.width_unit = self.width_package + 2*self.width_tolerance
         self.height_unit = self.height_package + 2*self.height_tolerance
         self.total_area = self.width_unit*self.height_unit
-        self.active_area = self.width_active*self.height_active
+        self.active_area = (self.width_active *
+                            self.height_active *
+                            self.active_area_correction)
             
     def get_unit_centre(self)->Tuple[float, float]:
         """Get the centre of the SiPM unit
@@ -156,8 +163,11 @@ class SiPMunit():
         """
         
         print(f'Model: {self.name}')
-        print(f'Total unit area: {self.total_area} mm^2')
-        print(f'Active area: {self.active_area} mm^2')
-        print(f'Active area fraction: {self.active_area/self.total_area:.2f}')
+        print(f'Total unit area: {self.total_area:.2f} mm^2')
+        print(f'Active area geometric correction: '
+              f'{self.active_area_correction:.2f}')
+        print(f'Active area: {self.active_area:.2f} mm^2')
+        print(f'Active area fraction: '
+              f'{self.active_area/self.total_area:.2f}')
         print(f'Width tolerance: {self.width_tolerance} mm')
         print(f'Height tolerance: {self.height_tolerance} mm')

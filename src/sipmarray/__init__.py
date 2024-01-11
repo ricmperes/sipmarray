@@ -5,3 +5,4 @@ SiPM arrays.
 
 from .array import SiPMarray
 from .unit import SiPMunit
+from . import models
