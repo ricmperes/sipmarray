@@ -31,4 +31,6 @@ class UZH_Tile(SiPMunit):
         self.D_corner_y_active = ((self.height_package - 
                                     self.height_active)/2 + 
                                     0.85)
+        self.fill_factor = 0.6
+        self.pde = 0.24
         self.set_dependant_properties()

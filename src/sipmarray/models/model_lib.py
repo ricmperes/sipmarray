@@ -16,4 +16,7 @@ model_lib = {
     "UZH_Tile": "UZH_Tile",
     "UZH_tile": "UZH_Tile",
     "uzh_tile": "UZH_Tile",
+    "digital": "Hdb_DigitalSiPM",
+    "Hdb_DigitalSiPM": "Hdb_DigitalSiPM",
+    "digiSiPM": "Hdb_DigitalSiPM",
     }

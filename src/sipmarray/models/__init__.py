@@ -1,3 +1,4 @@
+from .Hdb_DigitalSiPM import Hdb_DigitalSiPM
 from .S13370_3050 import S13370_3050
 from .S13370_6050 import S13370_6050
 from .S13370_6050CQ_02 import S13370_6050CQ_02

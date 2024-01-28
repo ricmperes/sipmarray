@@ -24,4 +24,6 @@ class S13370_6050CQ_02(SiPMunit):
         self.D_corner_y_active = ((self.height_package - 
                                     self.height_active)/2 + 
                                     self.height_tolerance)
+        self.fill_factor = 0.6
+        self.pde = 0.24
         self.set_dependant_properties()
