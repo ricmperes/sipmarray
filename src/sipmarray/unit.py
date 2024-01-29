@@ -42,6 +42,8 @@ class SiPMunit():
             self.active_area_correction = _model.active_area_correction
             self.D_corner_x_active = _model.D_corner_x_active
             self.D_corner_y_active = _model.D_corner_y_active
+            self.fill_factor = _model.fill_factor
+            self.pde = _model.pde
 
             self.set_dependant_properties()
 
