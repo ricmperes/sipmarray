@@ -136,7 +136,11 @@ class SiPMarray():
             file_name (str): name of the file to write the centres into
         """
         centres = self.get_centres(active_area=active_area)
-        np.savetxt(file_name, centres.T, delimiter=", ", fmt='%.3f')
+        np.savetxt(file_name, 
+                   centres.T, 
+                   header = 'x, y',
+                   delimiter=", ", 
+                   fmt='%.3f')
     
     def get_corners_active(self) -> np.ndarray:
         """Get all the positions of the corners of the active area of the SiPMs.
