@@ -3,6 +3,7 @@ from typing import Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from matplotlib.patches import Rectangle
 
 
@@ -20,7 +21,7 @@ class SiPMunit():
             self.model = model_lib[model]
         else:
             raise ValueError('Model not found. Please make a PR to add it.')
-        
+
     def get_model_geometry(self):
         """Loads model geometric properties from the model file.
 
@@ -50,7 +51,7 @@ class SiPMunit():
         except ModuleNotFoundError:
             raise ModuleNotFoundError(
                 'Model not found. Please make a PR to add it.')
-    
+
     def set_dependant_properties(self):
         """Defines dependant properties of the SiPM unit: total area, active
         area and active area fraction.
@@ -61,8 +62,9 @@ class SiPMunit():
         self.active_area = (self.width_active *
                             self.height_active *
                             self.active_area_correction)
-            
-    def get_unit_centre(self)->Tuple[float, float]:
+        self.active_area_fraction = self.active_area/self.total_area
+
+    def get_unit_centre(self) -> Tuple[float, float]:
         """Get the centre of the SiPM unit
 
         Returns:
@@ -71,8 +73,8 @@ class SiPMunit():
         """
 
         return (self.width_unit/2, self.height_unit/2)
-    
-    def get_unit_active_centre(self)->Tuple[float, float]:
+
+    def get_unit_active_centre(self) -> Tuple[float, float]:
         """Get the centre of the active area of the SiPM unit
 
         Returns:
@@ -83,9 +85,9 @@ class SiPMunit():
         x = self.D_corner_x_active + self.width_active/2
         y = self.D_corner_y_active + self.height_active/2
 
-        return (x,y)
-    
-    def plot_model(self, xy = (0,0), figax = None):
+        return (x, y)
+
+    def plot_model(self, xy=(0, 0), figax=None):
         """Make a plot of the SiPM unit model
 
         Args:
@@ -98,29 +100,29 @@ class SiPMunit():
             _type_: updated figure and axis environment
         """
         if figax == None:
-            fig, ax = plt.subplots(1,1,figsize = (5,5))
-        ax.add_patch(Rectangle((xy[0]+self.width_tolerance, 
-                                xy[1]+self.height_tolerance), 
-                   width=self.width_package,
-                   height=self.height_package,
-                   facecolor = 'gray',
-                   alpha = 0.3, edgecolor = 'k',
-                   label = 'Packaging area', zorder = 1))
+            fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+        ax.add_patch(Rectangle((xy[0]+self.width_tolerance,
+                                xy[1]+self.height_tolerance),
+                               width=self.width_package,
+                               height=self.height_package,
+                               facecolor='gray',
+                               alpha=0.3, edgecolor='k',
+                               label='Packaging area', zorder=1))
         ax.add_patch(Rectangle((xy[0]+self.D_corner_x_active,
-                                xy[1]+self.D_corner_y_active), 
-                               width=self.width_active, 
-                               height=self.height_active, 
-                               facecolor = 'k', alpha = 0.8, edgecolor = 'k',
-                              label = 'Active area', zorder = 2))
-        
+                                xy[1]+self.D_corner_y_active),
+                               width=self.width_active,
+                               height=self.height_active,
+                               facecolor='k', alpha=0.8, edgecolor='k',
+                               label='Active area', zorder=2))
+
         geometric_centre = self.get_unit_centre()
         active_centre = self.get_unit_active_centre()
 
-        ax.plot(geometric_centre[0], geometric_centre[1], 'o', 
-                c = 'g', label = 'Geometric centre')
+        ax.plot(geometric_centre[0], geometric_centre[1], 'o',
+                c='g', label='Geometric centre')
         ax.plot(active_centre[0], active_centre[1], 'x',
-                c = 'r', label = 'Active centre')
-        
+                c='r', label='Active centre')
+
         ax.set_xlim(xy[0]-0.1*self.width_unit, xy[0]+1.1*self.width_unit)
         ax.set_ylim(xy[1]-0.1*self.height_unit, xy[1]+1.1*self.height_unit)
         ax.set_aspect('equal')
@@ -128,14 +130,14 @@ class SiPMunit():
         ax.set_xlabel('x [mm]')
         ax.set_ylabel('y [mm]')
         ax.set_aspect('equal')
-        ax.grid(zorder = -10)
-        
+        ax.grid(zorder=-10)
+
         if figax == None:
             plt.show()
         else:
             return fig, ax
-    
-    def get_unit_patches(self,xy:np.ndarray) -> list:
+
+    def get_unit_patches(self, xy: np.ndarray) -> list:
         """Get the patches of the SiPM unit for plotting.
 
         Args:
@@ -145,31 +147,77 @@ class SiPMunit():
         Returns:
             list: list of patches of the SiPM units
         """
-        p = [Rectangle((xy[0]+self.width_tolerance, 
-                        xy[1]+self.height_tolerance), 
+        p = [Rectangle((xy[0]+self.width_tolerance,
+                        xy[1]+self.height_tolerance),
                        width=self.width_package,
                        height=self.height_package,
-                       facecolor = 'gray',
-                       alpha = 0.3, edgecolor = 'k', zorder = 3),
+                       facecolor='gray',
+                       alpha=0.3, edgecolor='k', zorder=3),
              Rectangle((xy[0]+self.D_corner_x_active,
-                        xy[1]+self.D_corner_y_active), 
-                       width=self.width_active, 
-                       height=self.height_active, 
-                       facecolor = 'k', alpha = 0.98, 
-                       edgecolor = 'k', zorder = 4)
-            ]
+                        xy[1]+self.D_corner_y_active),
+                       width=self.width_active,
+                       height=self.height_active,
+                       facecolor='k', alpha=0.98,
+                       edgecolor='k', zorder=4)
+             ]
         return p
-    
+
+    def get_properties_str(self) -> str:
+        """Return a string with the main properties of the SiPM model.
+        """
+
+        main_string = f'Model: {self.name}\n'
+        main_string += f'--------------------------------------------\n'
+        main_string += f'Width: {self.width_package} mm\n'
+        main_string += f'Height: {self.height_package} mm\n'
+        main_string += f'Active width: {self.width_active} mm\n'
+        main_string += f'Active height: {self.height_active} mm\n'
+        main_string += f'Width tolerance: {self.width_tolerance} mm\n'
+        main_string += f'Height tolerance: {self.height_tolerance} mm\n'
+        main_string += '--------------------------------------------\n'
+        main_string += f'Total unit area: {self.total_area:.2f} mm^2\n'
+        main_string += f'Active area geometric correction: {self.active_area_correction:.2f}\n'
+        main_string += f'Active area: {self.active_area:.2f} mm^2\n'
+        main_string += '--------------------------------------------\n'
+        main_string += f'Active area fraction: {self.active_area_fraction*100:.2f} %\n'
+        main_string += f'Photon detection efficiency: {self.pde*100:.2f} %'
+
+        return main_string
+
     def print_properties(self) -> None:
         """Print the main properties of the SiPM model
         """
-        
-        print(f'Model: {self.name}')
-        print(f'Total unit area: {self.total_area:.2f} mm^2')
-        print(f'Active area geometric correction: '
-              f'{self.active_area_correction:.2f}')
-        print(f'Active area: {self.active_area:.2f} mm^2')
-        print(f'Active area fraction: '
-              f'{self.active_area/self.total_area:.2f}')
-        print(f'Width tolerance: {self.width_tolerance} mm')
-        print(f'Height tolerance: {self.height_tolerance} mm')
+        print(self.get_properties_str())
+
+    def get_properties_df(self) -> pd.DataFrame:
+        """Get the main properties of the SiPM model in a DataFrame
+
+        Returns:
+            pd.DataFrame: DataFrame of the main properties of the SiPM model
+        """
+        properties = {'Property': ['Model',
+                                   'Width [mm]',
+                                   'Height [mm]',
+                                   'Active width [mm]',
+                                   'Active height [mm]',
+                                   'Width tolerance [mm]',
+                                   'Height tolerance [mm]',
+                                   'Total area [mm^2]',
+                                   'Active area geometric correction',
+                                   'Active area [mm^2]',
+                                   'Active area fraction',
+                                   'Photon detection efficiency'],
+
+                      'Value': [self.name,
+                                self.width_package,
+                                self.height_package,
+                                self.width_active,
+                                self.height_active,
+                                self.width_tolerance,
+                                self.height_tolerance,
+                                self.total_area,
+                                self.active_area_correction,
+                                self.active_area,
+                                self.active_area_fraction,
+                                self.pde]}
+        return pd.DataFrame(properties)
