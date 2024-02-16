@@ -9,8 +9,10 @@ from sipmarray.unit import SiPMunit
 class SiPMarray():
     """Class to represent a SiPM array.
     """
-    def __init__(self, array_diameter: float,
-                 border_margin:float, sipm_model:str):
+    def __init__(self, array_diameter: float = 150,
+                 border_margin:float = -10, 
+                 intra_sipm_distance: float = 0, 
+                 sipm_model:str = 'quad'):
         """SiPMarray class
 
         Args:
@@ -21,6 +23,7 @@ class SiPMarray():
         
         self.array_diameter = array_diameter
         self.border_margin = border_margin
+        self.intra_sipm_distance = intra_sipm_distance
         self.sipmunit = self.load_sipmunit(sipm_model)
         
         corner_meshes = self.make_corners()
@@ -38,15 +41,26 @@ class SiPMarray():
 
         Returns:
             tuple: (A_corner_xx, A_corner_yy, B_corner_xx, B_corner_yy, 
-                        C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
+                    C_corner_xx, C_corner_yy, D_corner_xx, D_corner_yy)
         """
-        
-        # make the center a not
-        D_corner_x = np.arange(0,self.array_diameter/2 + self.sipmunit.width_unit, self.sipmunit.width_unit)
-        D_corner_y = np.arange(0,self.array_diameter/2 +  self.sipmunit.height_unit, self.sipmunit.height_unit)
+        half_intra_space = self.intra_sipm_distance/2
 
-        D_corner_x = np.concatenate([-np.flip(D_corner_x[1:]),D_corner_x])
-        D_corner_y = np.concatenate([-np.flip(D_corner_y[1:]),D_corner_y])
+        # make the center a not
+        D_corner_x = np.arange(
+            0 + half_intra_space,
+            self.array_diameter/2 + self.sipmunit.width_unit + self.intra_sipm_distance,
+            self.sipmunit.width_unit + self.intra_sipm_distance)
+        D_corner_y = np.arange(
+            0 + half_intra_space, 
+            self.array_diameter/2 +  self.sipmunit.height_unit + self.intra_sipm_distance, 
+            self.sipmunit.height_unit + self.intra_sipm_distance)
+
+        D_corner_x = np.concatenate(
+            [-np.flip(D_corner_x) - self.sipmunit.width_unit,
+             D_corner_x])
+        D_corner_y = np.concatenate(
+            [-np.flip(D_corner_y) - self.sipmunit.height_unit,
+             D_corner_y])
 
         D_corner_xx, D_corner_yy = np.meshgrid(D_corner_x, D_corner_y, indexing = 'ij') 
 
