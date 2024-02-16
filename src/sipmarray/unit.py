@@ -175,11 +175,11 @@ class SiPMunit():
         main_string += f'Width tolerance: {self.width_tolerance} mm\n'
         main_string += f'Height tolerance: {self.height_tolerance} mm\n'
         main_string += '--------------------------------------------\n'
-        main_string += f'Total unit area: {self.total_area:.2f} mm^2\n'
-        main_string += f'Active area geometric correction: {self.active_area_correction:.2f}\n'
-        main_string += f'Active area: {self.active_area:.2f} mm^2\n'
+        main_string += f'Total unit area: {round(self.total_area):.2f} mm^2\n'
+        main_string += f'Active area geometric correction: {round(self.active_area_correction):.2f}\n'
+        main_string += f'Active area: {round(self.active_area):.2f} mm^2\n'
         main_string += '--------------------------------------------\n'
-        main_string += f'Active area fraction: {self.active_area_fraction*100:.2f} %\n'
+        main_string += f'Active area fraction: {round(self.active_area_fraction)*100:.2f} %\n'
         main_string += f'Photon detection efficiency: {self.pde*100:.2f} %'
 
         return main_string
@@ -215,9 +215,9 @@ class SiPMunit():
                                 self.height_active,
                                 self.width_tolerance,
                                 self.height_tolerance,
-                                self.total_area,
-                                self.active_area_correction,
-                                self.active_area,
-                                self.active_area_fraction,
+                                round(self.total_area, 2),
+                                round(self.active_area_correction, 2),
+                                round(self.active_area, 2),
+                                round(self.active_area_fraction, 2),
                                 self.pde]}
         return pd.DataFrame(properties)
