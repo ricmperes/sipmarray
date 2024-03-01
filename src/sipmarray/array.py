@@ -12,7 +12,8 @@ class SiPMarray():
     def __init__(self, array_diameter: float = 150,
                  border_margin:float = -10, 
                  intra_sipm_distance: float = 0, 
-                 sipm_model:str = 'quad'):
+                 sipm_model:str = 'quad',
+                 custom_unit_params:dict = {}):
         """SiPMarray class
 
         Args:
@@ -24,7 +25,7 @@ class SiPMarray():
         self.array_diameter = array_diameter
         self.border_margin = border_margin
         self.intra_sipm_distance = intra_sipm_distance
-        self.sipmunit = self.load_sipmunit(sipm_model)
+        self.sipmunit = self.load_sipmunit(sipm_model, custom_unit_params)
         
         corner_meshes = self.make_corners()
         self.cut_outside_array(corner_meshes)
@@ -109,7 +110,7 @@ class SiPMarray():
         self.C_corners_xx = np.ma.masked_array(C_corner_xx, mask= merged_mask)
         self.C_corners_yy = np.ma.masked_array(C_corner_yy, mask= merged_mask)
     
-    def load_sipmunit(self, model: str):
+    def load_sipmunit(self, model: str,custom_unit_params:dict = {}):
         """Load the SiPM unit.
 
         Args:
@@ -118,7 +119,7 @@ class SiPMarray():
         Returns:
             SiPMunit: a SiPM unit class object
         """
-        return SiPMunit(model=model)
+        return SiPMunit(model=model, custom_params=custom_unit_params)
     
     def get_centres(self, active_area: bool = True):
         """Get centres of the SiPMs.

@@ -10,9 +10,13 @@ from matplotlib.patches import Rectangle
 class SiPMunit():
     """Class to represent a SiPM unit."""
 
-    def __init__(self, model):
-        self.get_model_file(model)
-        self.get_model_geometry()
+    def __init__(self, model, custom_params = {}):
+        if model == 'custom':
+            self.check_custom_params(custom_params)
+            self.build_custom_model(custom_params)
+        else:
+            self.get_model_file(model)
+            self.get_model_geometry()
         self.set_dependant_properties()
 
     def get_model_file(self, model):
@@ -21,6 +25,51 @@ class SiPMunit():
             self.model = model_lib[model]
         else:
             raise ValueError('Model not found. Please make a PR to add it.')
+
+    def check_custom_params(self, custom_params):
+        """Check if the custom_params dictionary have all the correct params.
+        """
+        params_list = ['name',
+                       'width_package',
+                       'height_package',
+                       'width_tolerance',
+                       'height_tolerance',
+                       'width_active',
+                       'height_active',
+                       'active_area_correction',
+                       'D_corner_x_active',
+                       'D_corner_y_active',
+                       'fill_factor',
+                       'pde']
+       
+        params_missing = [
+            param for param in params_list if param not in custom_params]
+        if len(params_missing) > 0:
+            raise ValueError('The custom_params dictionary must have all the '
+                             'correct parameters.\nMissing parameters: '
+                             f'{params_missing}')
+            
+    def build_custom_model(self,config_dict):
+        """Build a custom model of the SiPM unit.
+
+        Args:
+            config_dict (dict): dictionary with the main properties of the
+                SiPM unit.
+        """
+
+        self.name = config_dict['name']
+        self.width_package = config_dict['width_package']
+        self.height_package = config_dict['height_package']
+        self.width_tolerance = config_dict['width_tolerance']
+        self.height_tolerance = config_dict['height_tolerance']
+        self.width_active = config_dict['width_active']
+        self.height_active = config_dict['height_active']
+        self.active_area_correction = config_dict['active_area_correction']
+        self.D_corner_x_active = config_dict['D_corner_x_active']
+        self.D_corner_y_active = config_dict['D_corner_y_active']
+        self.fill_factor = config_dict['fill_factor']
+        self.pde = config_dict['pde']
+
 
     def get_model_geometry(self):
         """Loads model geometric properties from the model file.
@@ -45,8 +94,6 @@ class SiPMunit():
             self.D_corner_y_active = _model.D_corner_y_active
             self.fill_factor = _model.fill_factor
             self.pde = _model.pde
-
-            self.set_dependant_properties()
 
         except ModuleNotFoundError:
             raise ModuleNotFoundError(
