@@ -19,4 +19,6 @@ model_lib = {
     "digital": "Hdb_DigitalSiPM",
     "Hdb_DigitalSiPM": "Hdb_DigitalSiPM",
     "digiSiPM": "Hdb_DigitalSiPM",
+    "S13370_6050VN": "S13370_6050VN",
+    "low dead space": "S13370_6050VN",
     }
