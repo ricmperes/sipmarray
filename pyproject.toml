@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sipmarray"
-version = "1.1"
-authors = [{ name="Ricardo Peres", email="rperes@physik.uzh.ch"},]
+version = "1.2"
+authors = [{ name="Ricardo Peres", email="r.motaperes@imperial.ac.uk"},]
 description = "A simple package to get the geometry of SiPM arrays."
 readme = "README.md"
 requires-python = ">=3.7"
